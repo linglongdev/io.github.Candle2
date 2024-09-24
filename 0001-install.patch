@@ -1,0 +1,43 @@
+From 89c899b96085df3ef742bb9c6e43de6bec66bec3 Mon Sep 17 00:00:00 2001
+From: wjyrich <1071633242@qq.com>
+Date: Thu, 19 Sep 2024 11:08:27 +0800
+Subject: [PATCH] install
+
+---
+ AppDir/usr/share/applications/Candle2.desktop | 2 +-
+ src/candle2.pro                               | 7 +++++++
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/AppDir/usr/share/applications/Candle2.desktop b/AppDir/usr/share/applications/Candle2.desktop
+index 65e0409..935f94b 100644
+--- a/AppDir/usr/share/applications/Candle2.desktop
++++ b/AppDir/usr/share/applications/Candle2.desktop
+@@ -2,7 +2,7 @@
+ Type=Application
+ Name=Candle2
+ Exec=Candle2
+-Icon=default
++Icon=candle_256
+ Comment=GRBL control interface in Qt
+ Terminal=false
+ Categories=Development;
+\ No newline at end of file
+diff --git a/src/candle2.pro b/src/candle2.pro
+index 15ffc63..9b63943 100644
+--- a/src/candle2.pro
++++ b/src/candle2.pro
+@@ -128,3 +128,10 @@ RESOURCES += \
+     images.qrc
+ 
+ CONFIG += c++14
++target.path = $$PREFIX/bin
++desktop.files = ../AppDir/usr/share/applications/Candle2.desktop
++desktop.path = $$PREFIX/share/applications/
++icons.path = $$PREFIX/share/icons/hicolor/apps/
++icons.files = images/candle_256.png
++
++INSTALLS += target desktop icons
+\ No newline at end of file
+-- 
+2.43.4
+
