@@ -1,0 +1,29 @@
+version: "1"
+
+package:
+  id: io.github.Candle2
+  name: Candle2
+  version: 2.4.0.1
+  kind: app
+  description: |
+    GRBL control interface in Qt.
+
+command:
+  - /opt/apps/io.github.Candle2/files/bin/Candle2
+
+base: org.deepin.foundation/23.0.0
+runtime: org.deepin.Runtime/23.0.1
+
+sources:
+  - kind: git
+    url: https://github.com/Schildkroet/Candle2.git
+    version: master
+    commit: 2ad3200e35ed5fa933dda111c30e7de86c7f2cc7
+
+build: |
+  cd /project/linglong/sources/Candle2.git
+  git apply ../../../0001-install.patch
+  cd src
+  qmake -makefile PREFIX=${PREFIX} LIB_INSTALL_DIR=${PREFIX}/lib/${TRIPLET}
+  make -j$(nproc)
+  make install
